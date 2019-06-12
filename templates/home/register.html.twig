@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+{% set zoubida = true %}
+{% set zubda = ["homme", "femme"] %}
+	<section id="banner" class="major">
+		<div class="inner">
+            <form id="register" method="post">
+                <header class="major">
+                    <div class="field half">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="field half">
+                        <label for="email">email</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div class="field half">
+                        <label for="password">password</label>
+                        <input type="text" name="password" id="password">
+                    </div>
+                    <div class="field half">
+                        <label for="sexe">sexe</label>
+                        {% for sexe in zubda %}
+                            <input type="radio" name="sexe" value="{{sexe}}"> {{sexe}} <br>
+                        {% endfor %}
+                    </div>
+                </header>
+                <div class="content">
+                    <p>A responsive site template designed by HTML5 UP<br />
+                        and released under the Creative Commons.</p>
+                    <ul class="actions">
+                        <li><a href="#one" class="button next scrolly">Get Started</a></li>
+                    </ul>
+                </div>
+            </form>
+		</div>
+	</section>
+{% endblock %}

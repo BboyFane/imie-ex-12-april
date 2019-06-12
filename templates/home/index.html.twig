@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %} {% block body %}
+<section id="banner" class="major">
+    <div class="inner">
+        <form action="/login" method="post" id="form_login" name="form_login">
+            <header class="major">
+                <h1>Hi, my name is Forty</h1>
+            </header>
+            <div class="content">
+                <p>A responsive site template designed by HTML5 UP<br /> and released under the Creative Commons.</p>
+                <ul class="actions">
+                    <li><a href="#one" class="button next scrolly">Get Started</a></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %} {% block script %}
+<script>
+    $(function() {
+        // Document ready
+        let user = {}
+
+        $("header.major > h1").click(() => {
+            console.log("Ok is good")
+            $("header.major").html('<input type="email" name="email" id="email" style=" width: 100%; " placeholder="Hi, my name is Forty">')
+        })
+
+        $("a.button.next.scrolly").click((e) => {
+            if (!user.email) {
+                e.preventDefault();
+                user.email = $("#email").val()
+                $("header.major").append('<input type="password" name="password" id="password" style=" width: 100%; " placeholder="My password">')
+                $("a.button.next.scrolly").text("Get Login")
+                $("ul.actions > li").html('<button type="submit" class="button next scrolly">Get Started</button>')
+            } else {
+                //Ajax
+                user.password = $("#password").val()
+                console.log(user)
+            }
+        })
+    })
+</script>
+{% endblock %}
